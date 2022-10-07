@@ -124,7 +124,7 @@ const Header = styled.div`
 `
 
 const SeatsContainer = styled.ul`
-    padding: 0 22px;
+    padding: 0 23px;
     button {
         width: 26px;
         height: 26px;
