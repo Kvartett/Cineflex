@@ -8,16 +8,17 @@ import Footer from "./Footer"
 
 export default function Movie() {
     const [movie, setMovie] = useState({})
-    const { movieId } = useParams(5)
-    console.log(movie)
+    const { movieId } = useParams()
+    console.log(movieId)
 
     useEffect(() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${movieId}/showtimes`)
 
         promise.then((res) => {
             setMovie(res.data)
+            console.log(res.data)
         })
-        
+
         promise.catch((error) => {
             console.log(error.response.data)
         })
@@ -28,7 +29,7 @@ export default function Movie() {
             <Header>
                 Selecione o horário
             </Header>
-            <MovieTime days={movie.days}/>
+            <MovieTime days={movie.days || []} />
             <Footer poster={movie.posterURL} title={movie.title} />
         </>
     )

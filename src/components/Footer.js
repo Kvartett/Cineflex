@@ -1,7 +1,6 @@
 import styled from "styled-components"
 
-export default function Footer({ movie }){
-    const { poster, title } = movie
+export default function Footer({ poster, title }){
     return (
         <FooterContainer>
             <img src={poster}/>

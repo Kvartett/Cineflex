@@ -1,15 +1,16 @@
 import styled from "styled-components"
 
-export default function MovieTime({ days }){
-    const { weekday, date, showtimes } = days
+export default function MovieTime({ days }) {
+    const [weekday, date, showtimes] = days
+    console.log(days)
 
     return (
-    <>
-        {days.map((days, i) => <MovieDay>
-            <p>{days.weekday} - {days.date}</p>
-            {showtimes.map ((showTimes, i) => <button key={i}>{showtimes.name}</button>)}
-        </MovieDay>)}
-    </>
+        <>
+            {days.map((d, i) => <MovieDay key={i}>
+                <p>{d.weekday} - {d.date}</p>
+                {d.showtimes.map((s, i) => <button key={i}>{s.name}</button>)}
+            </MovieDay>)}
+        </>
     )
 }
 

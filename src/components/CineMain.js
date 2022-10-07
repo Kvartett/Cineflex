@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import styled from "styled-components"
 import axios from "axios"
-
+import { Link } from "react-router-dom"
 
 export default function CineMain() {
     const [movies, setMovies] = useState([])
@@ -17,10 +17,13 @@ export default function CineMain() {
         })
     }, [])
 
-    function Films({ img }){
-        return (<img src={img.posterURL}/>)
+    function Films({ poster, id }) {
+        return (
+            <Link to={`/filme/${id}`}>
+                <img src={poster} />
+            </Link>
+        )
     }
-
 
     return (
         <>
@@ -28,7 +31,7 @@ export default function CineMain() {
                 Selecione o filme
             </Catalog>
             <MovieList>
-                {movies.map((img, i) => <Films img={img} key={i} />)}
+                {movies.map(({ posterURL, id }, i) => <Films id={id} poster={posterURL} key={i} />)}
             </MovieList>
         </>
     )
