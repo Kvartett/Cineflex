@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export default function Session() {
-    
+
     function Seats(){
         return (
             <>
@@ -10,6 +10,52 @@ export default function Session() {
                     <button>02</button>
                     <button>03</button>
                     <button>04</button>
+                    <button>01</button>
+                    <button>02</button>
+                    <button>03</button>
+                    <button>04</button>
+                    <button>01</button>
+                    <button>02</button>
+                    <button>01</button>
+                    <button>02</button>
+                    <button>03</button>
+                    <button>04</button>
+                    <button>01</button>
+                    <button>02</button>
+                    <button>03</button>
+                    <button>04</button>
+                    <button>01</button>
+                    <button>02</button>
+                    <button>01</button>
+                    <button>02</button>
+                    <button>03</button>
+                    <button>04</button>
+                    <button>01</button>
+                    <button>02</button>
+                    <button>03</button>
+                    <button>04</button>
+                    <button>01</button>
+                    <button>02</button>
+                    <button>01</button>
+                    <button>02</button>
+                    <button>03</button>
+                    <button>04</button>
+                    <button>01</button>
+                    <button>02</button>
+                    <button>03</button>
+                    <button>04</button>
+                    <button>01</button>
+                    <button>02</button>
+                    <button>01</button>
+                    <button>02</button>
+                    <button>03</button>
+                    <button>04</button>
+                    <button>01</button>
+                    <button>02</button>
+                    <button>03</button>
+                    <button>04</button>
+                    <button>01</button>
+                    <button>50</button>               
                 </SeatsContainer>
                 <LegendContainer>
                     <Legend>
@@ -29,12 +75,37 @@ export default function Session() {
         )
     }
 
+    function CustomerInfo(){
+        return (
+            <>
+                <CustomerInfoContainer>
+                    <label for="namePlace">Nome do comprador:</label>
+                    <input id="namePlace" placeholder="Digite seu nome..."></input>
+                    <label for="CpfPlace">CPF do comprador:</label>
+                    <input id="CpfPlace" placeholder="Digite seu CPF..."></input>
+                    <button>Reservar assento(s)</button>
+                </CustomerInfoContainer>
+            </>
+        )
+    }
+
+    function Footer(){
+        return (
+            <FooterContainer>
+                <img src="https://ovicio.com.br/wp-content/uploads/2022/08/20220823-image-2-691x1024.png"/>
+                <p>Avatar</p>
+            </FooterContainer>
+        )
+    }
+
     return (
         <>
             <Header>
                 Selecione o(s) assento(s)
             </Header>
             <Seats/>
+            <CustomerInfo/>
+            <Footer/>
         </>
     )   
 }
@@ -51,6 +122,7 @@ const Header = styled.div`
     font-size: 24px;
     line-height: 28px;
 `
+
 const SeatsContainer = styled.ul`
     padding: 0 22px;
     button {
@@ -92,5 +164,81 @@ const Legend = styled.li`
         font-weight: 400;
         font-size: 13px;
         line-height: 15px;
+    }
+`
+
+const CustomerInfoContainer = styled.form`
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 150px;
+    label {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 21px;
+        margin-bottom: 5px;
+    }
+    input {
+        width: 327px;
+        height: 51px;
+        background-color: #FFFFFF;
+        border: 1px solid #D5D5D5;
+        border-radius: 3px;
+        margin-bottom: 10px;
+        font-family: 'Roboto';
+        font-style: italic;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 21px;
+        display: flex;
+        align-items: center;
+        color: #AFAFAF;
+        padding-left: 18px;
+        box-sizing: border-box;
+    }
+    button {
+        background-color: #E8833A;
+        width: 225px;
+        height: 42px;
+        border-radius: 3px;
+        border: none;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 21px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #FFFFFF;
+        margin-top: 20px;
+    }
+`
+const FooterContainer = styled.div`
+    width: 100%;
+    height: 117px;
+    background-color: #DFE6ED;
+    border: 1px solid #9EADBA;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    img {
+        width: 60px;
+        height: 80px;
+        border: solid white 6px;
+        border-radius: 2px;
+        margin: 0 15px 0 10px;
+    }
+    p {
+        font-family: 'Roboto';
+        font-weight: 400;
+        font-size: 26px;
+        line-height: 25px;
+        color: #293845;
     }
 `
