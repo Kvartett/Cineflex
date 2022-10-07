@@ -1,19 +1,24 @@
+import { useEffect, useState } from "react"
 import styled from "styled-components"
+import axios from "axios"
+
 
 export default function CineMain() {
-    function Films(){
-        return (
-            <MovieList>
-                <li>Filme 1</li>
-                <li>Filme 2</li>
-                <li>Filme 3</li>
-                <li>Filme 4</li>
-                <li>Filme 5</li>
-                <li>Filme 6</li>
-                <li>Filme 7</li>
-                <li>Filme 8</li>
-            </MovieList>
-        )
+    const [movies, setMovies] = useState([])
+
+    useEffect(() => {
+        const promise = axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies")
+
+        promise.then(response => {
+            setMovies(response.data)
+        })
+        promise.catch(error => {
+            console.log(error.response.data)
+        })
+    }, [])
+
+    function Films({ img }){
+        return (<img src={img.posterURL}/>)
     }
 
 
@@ -22,7 +27,9 @@ export default function CineMain() {
             <Catalog>
                 Selecione o filme
             </Catalog>
-            <Films/>
+            <MovieList>
+                {movies.map((img, i) => <Films img={img} key={i} />)}
+            </MovieList>
         </>
     )
 }
@@ -42,12 +49,11 @@ const Catalog = styled.div`
 
 const MovieList = styled.ul`
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-wrap: wrap;
-    li {
+    img {
+        margin-bottom: 11px;
         width: 129px;
         height: 193px;
-        border: solid black 1px;
-        margin-bottom: 11px;
     }
 `
