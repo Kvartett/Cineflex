@@ -4,7 +4,7 @@ import Seat from "./Seats/Seat"
 import colors from "../helpers/colors"
 
 export default function Seats(props) {
-    const { seats, selectedSeats, setSelectedSeats } = props
+    const { seats, selectedSeats, setSelectedSeats, seatNumber, setSeatNumber } = props
     const { GREEN, GRAY, YELLOW } = colors
     const [allSeats, setAllSeats] = useState(seats)
 
@@ -19,7 +19,7 @@ export default function Seats(props) {
     return (
         <>
             <SeatsContainer>
-                {allSeats.map(({ id, name, isAvailable }, i) => <Seat selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats} color={whichColor(isAvailable)} id={id} number={name} isAvailable={isAvailable} key={i} />)}
+                {allSeats.map(({ id, name, isAvailable }, i) => <Seat seatNumber={seatNumber} setSeatNumber={setSeatNumber} selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats} color={whichColor(isAvailable)} id={id} number={name} isAvailable={isAvailable} key={i} />)}
             </SeatsContainer>
             <LegendContainer>
                 <Legend color={GREEN}>

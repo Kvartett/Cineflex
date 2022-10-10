@@ -1,20 +1,42 @@
-import { useLocation } from "react-router-dom"
+import axios from "axios"
+import { useEffect, useState } from "react"
+import { useLocation, useNavigate } from "react-router-dom"
 import styled from "styled-components"
-import Data from "./Data"
+import Data from "./Success/Data"
 
 export default function Success(props) {
     const location = useLocation()
-    console.log(location)
-    console.log(props)
-    const { title, date, showtime, seats, name, cpf } = location
+    const { sessionId, seatNumber, name, cpf } = location.state
+    const [title, setTitle] = useState("")
+    const [date, setDate] = useState("")
+    const [hour, setHour] = useState("")
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${sessionId}/seats`)
+
+        promise.then((res) => {
+            setTitle(res.data.movie.title)
+            setDate(res.data.day.date)
+            setHour(res.data.name)
+        })
+
+        promise.catch((error) => {
+            console.log(error.response.data)
+        })
+    })
+
+    function returnHome() {
+        navigate("/")
+    }
 
     return (
         <>
             <Header>
                 Pedido feito com sucesso!
             </Header>
-            <Data />
-            <Return>Voltar pra Home</Return>
+            <Data seatNumber={seatNumber} name={name} cpf={cpf} title={title} date={date} hour={hour} />
+            <Return onClick={returnHome} >Voltar pra Home</Return>
         </>
     )
 }

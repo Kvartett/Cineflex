@@ -2,8 +2,6 @@ import styled from "styled-components"
 import { Link } from "react-router-dom"
 
 export default function MovieTime({ days }) {
-    const [weekday, date, showtimes] = days
-
     function Time(props) {
         const { name, sessionId } = props
 
@@ -15,14 +13,18 @@ export default function MovieTime({ days }) {
     }
 
     return (
-        <>
+        <MovieContainer>
             {days.map((d, i) => <MovieDay key={i}>
                 <p>{d.weekday} - {d.date}</p>
                 {d.showtimes.map((s, i) => <Time name={s.name} sessionId={s.id} key={i} />)}
             </MovieDay>)}
-        </>
+        </MovieContainer>
     )
 }
+
+const MovieContainer = styled.div`
+    margin: 0 auto 130px auto;
+`
 
 const MovieDay = styled.div`
     padding-left: 25px;

@@ -2,18 +2,23 @@ import styled from "styled-components"
 import { useState } from "react"
 
 export default function Seat(props) {
-    const { selectedSeats, setSelectedSeats, id, number, isAvailable, color } = props
+    const { selectedSeats, setSelectedSeats, id, number, isAvailable, color, seatNumber, setSeatNumber } = props
     const [selected, setSelected] = useState(false)
 
     function selectSeat() {
         if (isAvailable) {
             if (selected === false) {
                 const newSelectedSeats = [...selectedSeats, id]
+                const newSeatsNumbers = [...seatNumber, number]
+                setSeatNumber(newSeatsNumbers)
                 setSelectedSeats(newSelectedSeats)
                 setSelected(true)
             } else {
                 const newSelectedSeats = [...selectedSeats]
+                const newSeatsNumbers = [...seatNumber]
                 const removeSeat = newSelectedSeats.filter((e) => e !== id)
+                const removeSeatNumber = newSeatsNumbers.filter((e) => e !== number)
+                setSeatNumber(removeSeatNumber)
                 setSelectedSeats(removeSeat)
                 setSelected(false)
             }

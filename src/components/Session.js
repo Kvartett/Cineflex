@@ -7,16 +7,14 @@ import CustomerInfo from "./Sessions/CustomerInfo"
 import Footer from "./Sessions/Footer"
 
 export default function Session() {
-    const [sessionStatus, setSessionStatus] = useState({})
     const [selectedSeats, setSelectedSeats] = useState([])
+    const [sessionStatus, setSessionStatus] = useState({})
     const { sessionId } = useParams()
     const [customerName, setCustomerName] = useState("")
     const [cpf, setCpf] = useState("")
-    const [title, setTitle] = useState("")
-    const [date, setDate] = useState("")
-    const [showtime, setShowtime] = useState("")
+    const [seatNumber, setSeatNumber] = useState([])
     const navigate = useNavigate()
-    let usersInfo = { title, date, showtime, seats: selectedSeats, name: customerName, cpf }
+    let usersInfo = { sessionId, seatNumber, name: customerName, cpf }
 
     useEffect(() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${sessionId}/seats`)
@@ -35,9 +33,6 @@ export default function Session() {
         if (customerName !== "" && cpf !== "" && selectedSeats.length !== 0) {
             const body = { ids: selectedSeats, name: customerName, cpf }
             const promise = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many", body)
-            setTitle(sessionStatus.movie.title)
-            setDate(sessionStatus.day.date)
-            setShowtime(sessionStatus.name)
 
             promise.then(() => {
                 alert("Lugares reservados!")
@@ -59,7 +54,7 @@ export default function Session() {
             <Header>
                 Selecione o(s) assento(s)
             </Header>
-            <Seats selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats} seats={sessionStatus.seats} />
+            <Seats seatNumber={seatNumber} setSeatNumber={setSeatNumber} selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats} seats={sessionStatus.seats} />
             <CustomerInfo sendRequest={sendRequest} customerName={customerName} setCustomerName={setCustomerName} cpf={cpf} setCpf={setCpf} />
             <Footer poster={sessionStatus.movie.posterURL} title={sessionStatus.movie.title} weekday={sessionStatus.day.weekday} hour={sessionStatus.name} />
         </>

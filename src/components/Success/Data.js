@@ -1,31 +1,33 @@
 import styled from "styled-components"
 
-export default function Data() {
+export default function Data(props) {
+    const { seatNumber, name, cpf, title, date, hour } = props
     return (
         <>
             <Info>
                 <h2>Filme e sessão</h2>
-                <p>Avatar</p>
-                <p>24/06/2021 15:00</p>
+                <p>{title}</p>
+                <p>{date} - {hour}</p>
             </Info>
             <Info>
                 <h2>Ingresso(s)</h2>
-                <p>Assento 15</p>
-                <p>Assento 16</p>
+                {seatNumber.map((s, i) => <p key={i}>Assento {s}</p>)}
             </Info>
             <Info>
                 <h2>Comprador</h2>
-                <p>Nome: João da Silva Sauro</p>
-                <p>CPF: 123.456.789-10</p>
+                <p>Nome: {name}</p>
+                <p>CPF: {cpf}</p>
             </Info>
         </>
     )
 }
 
 const Info = styled.div`
-    margin-top: 10px;
+    margin: 20px auto;
     padding-left: 25px;
-    height: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     h2 {
         font-family: 'Roboto';
         font-style: normal;
