@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { useParams } from "react-router-dom"
 import axios from "axios"
 import MovieTime from "./Movie/MovieTime"
-import Footer from "./Footer"
+import Footer from "./Movie/Footer"
 
 
 export default function Movie() {

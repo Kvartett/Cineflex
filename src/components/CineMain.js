@@ -12,6 +12,7 @@ export default function CineMain() {
         promise.then(response => {
             setMovies(response.data)
         })
+
         promise.catch(error => {
             console.log(error.response.data)
         })

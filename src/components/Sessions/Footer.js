@@ -1,10 +1,15 @@
 import styled from "styled-components"
 
-export default function Footer({ poster, title }) {
+export default function Footer(props) {
+    const { poster, title, weekday, hour } = props
     return (
         <FooterContainer>
             <img src={poster} />
-            <p>{title}</p>
+            <div>
+                <h1>{title}</h1>
+                <p>{weekday} - {hour}</p>
+            </div>
+
         </FooterContainer>
     )
 }
@@ -25,6 +30,13 @@ const FooterContainer = styled.div`
         border: solid white 6px;
         border-radius: 2px;
         margin: 0 15px 0 10px;
+    }
+    h1 {
+        font-family: 'Roboto';
+        font-weight: 700;
+        font-size: 26px;
+        line-height: 25px;
+        color: #293845;
     }
     p {
         font-family: 'Roboto';

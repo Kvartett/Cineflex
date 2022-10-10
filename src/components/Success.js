@@ -1,16 +1,22 @@
+import { useLocation } from "react-router-dom"
 import styled from "styled-components"
 import Data from "./Data"
 
-export default function Success() {
+export default function Success(props) {
+    const location = useLocation()
+    console.log(location)
+    console.log(props)
+    const { title, date, showtime, seats, name, cpf } = location
+
     return (
         <>
             <Header>
                 Pedido feito com sucesso!
             </Header>
-            <Data/>
+            <Data />
             <Return>Voltar pra Home</Return>
         </>
-    )   
+    )
 }
 
 const Header = styled.div`
