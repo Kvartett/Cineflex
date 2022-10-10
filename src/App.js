@@ -12,10 +12,10 @@ export default function App() {
             <GlobalStyle />
             <Header />
             <Routes>
-                <Route path="/" element={<CineMain />}/>
-                <Route path="/filme/:movieId" element={<Movie />}/>
-                <Route path="/sessao" element={<Session />}/>
-                <Route path="/sucesso" element={<Success />}/>
+                <Route path="/" element={<CineMain />} />
+                <Route path="/filme/:movieId" element={<Movie />} />
+                <Route path="/sessao/:sessionId" element={<Session />} />
+                <Route path="/sucesso" element={<Success />} />
             </Routes>
         </BrowserRouter>
     )

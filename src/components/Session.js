@@ -1,73 +1,44 @@
+import axios from "axios"
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
 import styled from "styled-components"
 
 export default function Session() {
+    const [seats, setSeats] = useState({})
+    const { sessionId } = useParams()
 
-    function Seats(){
+    useEffect(() => {
+        const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${sessionId}/seats`)
+
+        promise.then((res) => {
+            setSeats(res.data)
+            console.log(seats)
+        })
+
+        promise.catch((error) => {
+            console.log(error.response.data)
+        })
+    }, [])
+
+    function Seats() {
         return (
             <>
                 <SeatsContainer>
                     <button>01</button>
                     <button>02</button>
                     <button>03</button>
-                    <button>04</button>
-                    <button>01</button>
-                    <button>02</button>
-                    <button>03</button>
-                    <button>04</button>
-                    <button>01</button>
-                    <button>02</button>
-                    <button>01</button>
-                    <button>02</button>
-                    <button>03</button>
-                    <button>04</button>
-                    <button>01</button>
-                    <button>02</button>
-                    <button>03</button>
-                    <button>04</button>
-                    <button>01</button>
-                    <button>02</button>
-                    <button>01</button>
-                    <button>02</button>
-                    <button>03</button>
-                    <button>04</button>
-                    <button>01</button>
-                    <button>02</button>
-                    <button>03</button>
-                    <button>04</button>
-                    <button>01</button>
-                    <button>02</button>
-                    <button>01</button>
-                    <button>02</button>
-                    <button>03</button>
-                    <button>04</button>
-                    <button>01</button>
-                    <button>02</button>
-                    <button>03</button>
-                    <button>04</button>
-                    <button>01</button>
-                    <button>02</button>
-                    <button>01</button>
-                    <button>02</button>
-                    <button>03</button>
-                    <button>04</button>
-                    <button>01</button>
-                    <button>02</button>
-                    <button>03</button>
-                    <button>04</button>
-                    <button>01</button>
-                    <button>50</button>               
                 </SeatsContainer>
                 <LegendContainer>
                     <Legend>
-                        <button/>
+                        <button />
                         <p>Selecionado</p>
                     </Legend>
                     <Legend>
-                        <button/>
+                        <button />
                         <p>Disponível</p>
                     </Legend>
                     <Legend>
-                        <button/>
+                        <button />
                         <p>Indisponível</p>
                     </Legend>
                 </LegendContainer>
@@ -75,7 +46,7 @@ export default function Session() {
         )
     }
 
-    function CustomerInfo(){
+    function CustomerInfo() {
         return (
             <>
                 <CustomerInfoContainer>
@@ -89,10 +60,10 @@ export default function Session() {
         )
     }
 
-    function Footer(){
+    function Footer() {
         return (
             <FooterContainer>
-                <img src="https://ovicio.com.br/wp-content/uploads/2022/08/20220823-image-2-691x1024.png"/>
+                <img src="https://ovicio.com.br/wp-content/uploads/2022/08/20220823-image-2-691x1024.png" />
                 <p>Avatar</p>
             </FooterContainer>
         )
@@ -103,11 +74,11 @@ export default function Session() {
             <Header>
                 Selecione o(s) assento(s)
             </Header>
-            <Seats/>
-            <CustomerInfo/>
-            <Footer/>
+            <Seats />
+            <CustomerInfo />
+            <Footer />
         </>
-    )   
+    )
 }
 
 const Header = styled.div`

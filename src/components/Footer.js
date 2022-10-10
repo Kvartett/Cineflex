@@ -1,9 +1,9 @@
 import styled from "styled-components"
 
-export default function Footer({ poster, title }){
+export default function Footer({ poster, title }) {
     return (
         <FooterContainer>
-            <img src={poster}/>
+            <img src={poster} />
             <p>{title}</p>
         </FooterContainer>
     )

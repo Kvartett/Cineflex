@@ -9,14 +9,12 @@ import Footer from "./Footer"
 export default function Movie() {
     const [movie, setMovie] = useState({})
     const { movieId } = useParams()
-    console.log(movieId)
 
     useEffect(() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${movieId}/showtimes`)
 
         promise.then((res) => {
             setMovie(res.data)
-            console.log(res.data)
         })
 
         promise.catch((error) => {
